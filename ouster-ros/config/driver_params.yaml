@@ -86,7 +86,7 @@ ouster/os_driver:
     # - ouster_ros/os_point.h
     # - ouster_ros/sensor_point_types.h
     # - ouster_ros/common_point_types.h.
-    point_type: original
+    point_type: xyzir
     # azimuth window start[optional]: values range [0, 360000] millidegrees
     azimuth_window_start: 90000
     # azimuth_window_end[optional]: values range [0, 360000] millidegrees
