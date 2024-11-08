@@ -18,7 +18,7 @@
     RNG19_RFL8_SIG16_NIR16_DUAL,
     FUSA_RNG15_RFL8_NIR8_DUAL
     }"/>
-  <arg name="lidar_mode" default=""
+  <arg name="lidar_mode" default="1024x20"
     description="resolution and rate; possible values: {
     512x10,
     512x20,
@@ -54,7 +54,7 @@
     Choose between the value of sensor_frame or lidar_frame, leaving this value empty
     would set lidar_frame to be the frame used when publishing these messages."/>
 
-  <arg name="use_system_default_qos" default="false"
+  <arg name="use_system_default_qos" default="true"
     description="Use the default system QoS settings"/>
   
   <arg name="proc_mask" default="IMG|PCL|IMU|SCAN" description="
@@ -64,7 +64,7 @@
     use this parameter in conjunction with the SCAN flag
     and choose a value the range [0, sensor_beams_count)"/>
 
-  <arg name="point_type" default="original" description="point type for the generated point cloud;
+  <arg name="point_type" default="xyzir" description="point type for the generated point cloud;
    available options: {
     original,
     native,
@@ -73,15 +73,15 @@
     xyzir
     }"/>
 
-  <arg name="azimuth_window_start" default="0" description="azimuth window start;
+  <arg name="azimuth_window_start" default="90000" description="azimuth window start;
     values range [0, 360000] millidegrees"/>
-  <arg name="azimuth_window_end" default="360000" description="azimuth window end;
+  <arg name="azimuth_window_end" default="270000" description="azimuth window end;
     values range [0, 360000] millidegrees"/>
 
   <arg name="persist_config" default="false"
     description="request the sensor to persist settings"/>
 
-  <arg name="attempt_reconnect" default="false"
+  <arg name="attempt_reconnect" default="true"
     description="attempting to reconnect to the sensor after connection loss or
     sensor powered down"/>
   <arg name="dormant_period_between_reconnects" default="1.0"
@@ -98,7 +98,7 @@
   <arg name="destagger" default="true"
     description="enable or disable point cloud destaggering"/>
 
-  <arg name="min_range" default="0.0"
+  <arg name="min_range" default="0.5"
     description="minimum lidar range to consider (meters)"/>
   <arg name="max_range" default="10000.0"
     description="minimum lidar range to consider (meters)"/>

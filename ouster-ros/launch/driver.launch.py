@@ -2,7 +2,7 @@
 #
 
 """Launch a sensor node along with os_cloud and os_"""
-import os
+
 from pathlib import Path
 import launch
 import lifecycle_msgs.msg
@@ -24,10 +24,13 @@ def generate_launch_description():
     component will run in a separate process).
     """
     ouster_ros_pkg_dir = get_package_share_directory('ouster_ros')
-    
-    package_path = get_package_share_directory('ouster_ros')
-    config = os.path.join(package_path, 'config', 'driver_params.yaml')
-
+    default_params_file = \
+        Path(ouster_ros_pkg_dir) / 'config' / 'driver_params.yaml'
+    params_file = LaunchConfiguration('params_file')
+    params_file_arg = DeclareLaunchArgument('params_file',
+                                            default_value=str(
+                                                default_params_file),
+                                            description='name or path to the parameters file to use.')
 
     ouster_ns = LaunchConfiguration('ouster_ns')
     ouster_ns_arg = DeclareLaunchArgument(
@@ -45,7 +48,7 @@ def generate_launch_description():
         executable='os_driver',
         name=os_driver_name,
         namespace=ouster_ns,
-        parameters=[config],
+        parameters=[params_file],
         output='screen',
     )
 
@@ -90,6 +93,7 @@ def generate_launch_description():
     )
 
     return launch.LaunchDescription([
+        params_file_arg,
         ouster_ns_arg,
         rviz_enable_arg,
         os_driver_name_arg,
