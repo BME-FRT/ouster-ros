@@ -26,7 +26,7 @@ def generate_launch_description():
     ouster_ros_pkg_dir = get_package_share_directory('ouster_ros')
     # use the community_driver_config.yaml by default
     default_params_file = \
-        Path(ouster_ros_pkg_dir) / 'config' / 'community_driver_config.yaml'
+        Path(ouster_ros_pkg_dir) / 'config' / 'driver_params.yaml'
     params_file = LaunchConfiguration('params_file')
     params_file_arg = DeclareLaunchArgument('params_file',
                                             default_value=str(
