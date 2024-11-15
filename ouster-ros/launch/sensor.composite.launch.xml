@@ -10,7 +10,7 @@
     description="port to which the sensor should send lidar data"/>
   <arg name="imu_port" default="0"
     description="port to which the sensor should send imu data"/>
-  <arg name="udp_profile_lidar" default=""
+  <arg name="udp_profile_lidar" default="RNG19_RFL8_SIG16_NIR16"
     description="lidar packet profile; possible values: {
     LEGACY,
     RNG19_RFL8_SIG16_NIR16,
@@ -64,7 +64,7 @@
     use this parameter in conjunction with the SCAN flag
     and choose a value the range [0, sensor_beams_count)"/>
 
-  <arg name="point_type" default="xyzir" description="point type for the generated point cloud;
+  <arg name="point_type" default="original" description="point type for the generated point cloud;
    available options: {
     original,
     native,
