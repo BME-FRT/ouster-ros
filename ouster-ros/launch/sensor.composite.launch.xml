@@ -10,7 +10,7 @@
     description="port to which the sensor should send lidar data"/>
   <arg name="imu_port" default="0"
     description="port to which the sensor should send imu data"/>
-  <arg name="udp_profile_lidar" default=""
+  <arg name="udp_profile_lidar" default="RNG19_RFL8_SIG16_NIR16"
     description="lidar packet profile; possible values: {
     LEGACY,
     RNG19_RFL8_SIG16_NIR16,
@@ -18,7 +18,7 @@
     RNG19_RFL8_SIG16_NIR16_DUAL,
     FUSA_RNG15_RFL8_NIR8_DUAL
     }"/>
-  <arg name="lidar_mode" default=""
+  <arg name="lidar_mode" default="1024x20"
     description="resolution and rate; possible values: {
     512x10,
     512x20,
@@ -49,7 +49,7 @@
     description="sets name of choice for the os_lidar tf frame, value can not be empty"/>
   <arg name="imu_frame" default="os_imu"
       description="sets name of choice for the os_imu tf frame, value can not be empty"/>
-  <arg name="point_cloud_frame" default=""
+  <arg name="point_cloud_frame" default="os_sensor"
     description="which frame to be used when publishing PointCloud2 or LaserScan messages.
     Choose between the value of sensor_frame or lidar_frame, leaving this value empty
     would set lidar_frame to be the frame used when publishing these messages."/>
@@ -58,7 +58,7 @@
     for the imu/sensor/lidar frames. Prevent the driver from broadcasting TF transforms by
     setting this parameter to False."/>
 
-  <arg name="use_system_default_qos" default="false"
+  <arg name="use_system_default_qos" default="true"
     description="Use the default system QoS settings"/>
   
   <arg name="proc_mask" default="IMG|PCL|IMU|SCAN|TLM" description="
@@ -86,7 +86,7 @@
   <arg name="persist_config" default="false"
     description="request the sensor to persist settings"/>
 
-  <arg name="attempt_reconnect" default="false"
+  <arg name="attempt_reconnect" default="true"
     description="attempting to reconnect to the sensor after connection loss or
     sensor powered down"/>
   <arg name="dormant_period_between_reconnects" default="1.0"
